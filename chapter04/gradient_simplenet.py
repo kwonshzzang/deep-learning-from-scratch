@@ -36,8 +36,7 @@ t = np.array([0, 0, 1]) # 정답 레이블
 print(net.loss(x, t))
 
 print('----------------------------------------')
-def f(W):
-    return net.loss(x, t)
+f = lambda w: net.loss(x, t)
 
 dW = numerical_gradient(f, net.W)
 print(dW)
