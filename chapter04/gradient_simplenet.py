@@ -4,10 +4,9 @@ import numpy as np
 from common.functions import softmax, cross_entropy_error
 from common.gradient import numerical_gradient
 
-
 class simpleNet:
     def __init__(self):
-        self.W = np.random.randn(2, 3)  # 정규분포로 초기화
+        self.W = np.random.randn(2, 3) # 정규분포로 초기화 
         
     def predict(self, x):
         return np.dot(x, self.W)
@@ -18,25 +17,25 @@ class simpleNet:
         loss = cross_entropy_error(y, t)
         
         return loss
-
-
+        
+        
 net = simpleNet()
 print(net.W)
-
 print('----------------------------------------')
+
 x = np.array([0.6, 0.9])
 p = net.predict(x)
 print(p)
-
-max_index = np.argmax(p) # 최댓값의 인덱스
-print("max_index is {}.".format(max_index))
-
 print('----------------------------------------')
-t = np.array([0, 0, 1]) # 정답 레이블
+
+print(np.argmax(p))
+print('----------------------------------------')
+t = np.array([0, 0, 1])
 print(net.loss(x, t))
 
 print('----------------------------------------')
-f = lambda w: net.loss(x, t)
+def f(W):
+    return net.loss(x, t)
 
 dW = numerical_gradient(f, net.W)
 print(dW)
