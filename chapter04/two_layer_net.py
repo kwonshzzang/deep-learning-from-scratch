@@ -52,16 +52,24 @@ class TwoLayerNet:
         
         return grads
         
+if __name__ == "__main__":
+    net = TwoLayerNet(input_size=784, hidden_size=100, output_size=10)          
 
-net = TwoLayerNet(input_size=784, hidden_size=100, output_size=10)          
-
-print(net.params['W1'].shape)   
-print(net.params['b1'].shape)
-print(net.params['W2'].shape)
-print(net.params['b2'].shape)
+    print(net.params['W1'].shape)   
+    print(net.params['b1'].shape)
+    print(net.params['W2'].shape)
+    print(net.params['b2'].shape)
 
 
-x = np.random.rand(100, 784) # 더미 입력 데이터(100장 분량)
-print(x)
-y = net.predict(x)
-print(y)
+    x = np.random.rand(100, 784) # 더미 입력 데이터(100장 분량)
+    y = net.predict(x)
+
+    x = np.random.rand(100, 784) # 더미 입력 데이터(100장 분량)
+    t = np.random.rand(100, 10)  # 더미 정답 레이블(100장 분량)
+
+    grads = net.numerical_gradient(x, t) # 기울기 계산
+
+    print(grads['W1'].shape)  # (784, 100)
+    print(grads['b1'].shape)  # (100,)
+    print(grads['W2'].shape)  # (100, 10)
+    print(grads['b2'].shape)  # (10,)
