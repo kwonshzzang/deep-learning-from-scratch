@@ -1,6 +1,6 @@
 import sys, os
 
-from Chapter03.load_mnist import x_train, t_train, x_test
+from chapter03.load_mnist import x_train, t_train, x_test
 
 sys.path.append(os.pardir)
 import numpy as np
